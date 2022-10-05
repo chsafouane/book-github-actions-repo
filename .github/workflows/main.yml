@@ -11,17 +11,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
   
-  steps:
-  - uses: actions/checkout@v3
+    steps:
+    - uses: actions/checkout@v3
 
-  - name: use Node.js
-    uses: actions/setup-node@v1
+    - name: use Node.js
+      uses: actions/setup-node@v1
   
-  - run: npm install
+    - run: npm install
 
-  - run: gulp build
+    - run: gulp build
 
-  - uses: actions/upload-artifact@v1
-    with:
-      name: MyPackage
-      path: dest
+    - uses: actions/upload-artifact@v1
+      with:
+        name: MyPackage
+        path: dest
