@@ -9,4 +9,4 @@ jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-    - run: echo 'je vérifie les fichiers YAML'
+    - run: echo 'je vérifie les fichiers YAML avec cette branche'
