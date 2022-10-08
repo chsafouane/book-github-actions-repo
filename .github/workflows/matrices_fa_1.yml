@@ -1,14 +1,16 @@
-on: 
-  workflow_dispatch:
-    
+name: "matrix FA"
+on: workflow_dispatch
+
 
 jobs:
-  job1:
+  simple_matrix:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [10, 12]
     steps:
-      - name: echoing
-        run: echo 'Hello there'
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
