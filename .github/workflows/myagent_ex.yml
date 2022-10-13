@@ -9,6 +9,6 @@ jobs:
     steps:
       - name: Imprimer un texte
       - run: |
-          'cd /'
-          'ls -al'
-          'touch hello.txt'
+          cd /
+          ls -al
+          touch hello.txt
