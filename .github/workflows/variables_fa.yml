@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello
-      - run: echo ${{ toJson(github) }}
+      - run: echo '${{ toJson(github) }}'
       - run: echo End
