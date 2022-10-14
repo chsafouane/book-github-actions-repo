@@ -1,0 +1,12 @@
+name: testing_variables
+
+on: 
+  workflow_dispatch
+
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+    env:
+      MA_VARIABLE: hello
+    steps:
+    - run: echo ${{ env.MA_VARIABLE }}
