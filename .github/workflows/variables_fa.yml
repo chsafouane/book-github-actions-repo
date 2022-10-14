@@ -9,8 +9,8 @@ jobs:
     env:
       VARIABLE: jaune
     steps:
-    - run: echo ${{ env.VARIABLE }}
+    - run: echo $env.VARIABLE
     - run: |
         echo "VARIABLE=vert" >> $GITHUB_ENV
-        echo ${{ env.VARIABLE }}
-    - run: echo ${{ env.VARIABLE }}
+        echo $VARIABLE
+    - run: echo $VARIABLE
