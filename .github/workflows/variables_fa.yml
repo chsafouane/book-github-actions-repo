@@ -1,4 +1,4 @@
-name: testing_dynamic_var
+name: testing_output
 
 on:
   workflow_dispatch
@@ -6,11 +6,5 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      VARIABLE: jaune
     steps:
-    - run: echo $env.VARIABLE
-    - run: |
-        echo "VARIABLE=vert" >> $GITHUB_ENV
-        echo $VARIABLE
-    - run: echo $VARIABLE
+      - run: echo "${{ toJson(github) }}"
