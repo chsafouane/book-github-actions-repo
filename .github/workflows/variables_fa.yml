@@ -1,12 +1,16 @@
-name: testing_variables
+name: testing_dynamic_var
 
-on: 
+on:
   workflow_dispatch
 
 jobs:
-  build_job:
+  build:
     runs-on: ubuntu-latest
     env:
-      MA_VARIABLE: hello
+      VARIABLE: jaune
     steps:
-    - run: echo ${{ env.MA_VARIABLE }}
+    - run: echo ${{ VARIABLE }}
+    - run: |
+        echo "VARIABLE=vert" >> $GITHUB_ENV
+        echo $VARIABLE
+    - run: echo $VARIABLE
