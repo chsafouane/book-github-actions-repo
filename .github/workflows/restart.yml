@@ -1,17 +1,13 @@
-name: "triggers - exercice 1"
+name: "triggers - exercice 3"
 
 on:
-  push:
   pull_request:
-      branches: 
-        - main
+    paths: 
+    - "**yml"
+    - "!**/test/**yml"
 
 jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/stale@v3
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message:  This issue is stale because ...
-        days-before-close: 5
+    - run: echo "je vérifie les fichiers YAML"
