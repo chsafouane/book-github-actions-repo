@@ -1,5 +1,4 @@
-name: "jobs - ex2"
-
+name: Dual jobs
 on:
   workflow_dispatch:
 
@@ -7,21 +6,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          dayOfWeek=$(date +%u)
-          if ($dayOfWeek > 5)
-          then
-            exit 1
-          fi
+      - run: echo "hello job2" > test.txt
   job2:
     runs-on: ubuntu-latest
     needs: job1
-    if: failure()
     steps:
-      - run: echo "Quelque chose s'est mal passée"
-  job3:
-    runs-on: ubuntu-latest
-    needs: job2
-    if: always()
-    steps:
-      - run: echo "Je m'excuse quoi qu'il arrive"
+      - run: cat test.txt
