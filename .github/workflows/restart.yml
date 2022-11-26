@@ -1,13 +1,27 @@
-name: "triggers - exercice 3"
+name: "jobs - ex2"
 
 on:
-  pull_request:
-    paths: 
-    - "**yml"
-    - "!**/test/**yml"
+  workflow_dispatch:
 
 jobs:
-  stale:
+  job1:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "je vérifie les fichiers YAML"
+      - run: |
+        dayOfWeek=$(date +%u)
+        if ($dayOfWeek > 5)
+        then
+          exit 1
+        fi
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    if: failure()
+    steps:
+      - run: echo "Quelque chose s'est mal passée"
+  job3:
+    runs-on: ubuntu-latest
+    needs: job2
+    if: always()
+    steps:
+      - run: echo "Je m'excuse quoi qu'il arrive"
