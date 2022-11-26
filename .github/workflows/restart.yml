@@ -1,29 +1,18 @@
-name: My first workflow
+name: My workflow with params
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      myParam:
+        description: "my first param"
+        required: true
+        default: hello
+      myParam2:
+        description: "my second param"
+        required: true
 
 jobs:
-  build:
+  my-job:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-    
-    - run: npm install
-
-    - run: gulp build
-
-    - uses: actions/upload-artifact@v1
-      with:
-        name: MyPackage
-        path: dest
+      - run: echo "${{ github.event.inputs.myParam }} ${{ github.event.inputs.myParam2 }}"
