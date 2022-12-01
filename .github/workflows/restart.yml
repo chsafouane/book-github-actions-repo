@@ -1,18 +1,25 @@
-name: "matrix FA"
+name: "matrix - ex 1"
 on: workflow_dispatch
 
 jobs:
-  matrix_job_ex:
-    runs-on: ${{ matrix.os }}
+  build:
+    runs-on: windows-latest
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        node: [10, 12]
-        include:
-          - os: macos-latest
-            node: 8
+        dotnet-version: [4.2.x, 5.0.x]
+        buildMode: ["Debug", "Release"]
+  
     steps:
-      - name: Setup node
-        uses: actions/setup-node@v1
+      - name: Récupère le code source
+        uses: actions/checkout@v2
+      - name: Install .NET
+        uses: actions/setup-dotnet@v1
         with:
-          node-version: ${{ matrix.node }}
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore --configuration ${{ env.buildMode }}
+        env:
+          buildMode: $ {{ matrix.buildMode }}
+      
