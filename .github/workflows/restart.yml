@@ -2,14 +2,15 @@ name: "matrix FA"
 on: workflow_dispatch
 
 jobs:
-  simple_matrix:
+  matrix_job_ex:
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
         node: [10, 12]
-    
+        include:
+          - os: macos-latest
+            node: 8
     steps:
       - name: Setup node
         uses: actions/setup-node@v1
