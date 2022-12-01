@@ -3,11 +3,11 @@ on: workflow_dispatch
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         dotnet-version: [4.2.x, 5.0.x]
-        buildMode: ["Debug", "Release"]
+        buildMode: [Debug, Release]
   
     steps:
       - name: Récupère le code source
