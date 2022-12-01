@@ -1,15 +1,17 @@
-name: container_test
-
-on:
-  workflow_dispatch:
+name: "matrix FA"
+on: workflow_dispatch
 
 jobs:
-  container_test_job:
-    runs-on: ubuntu-latest
-    container: 'node:current'
-  
+  simple_matrix:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [10, 12]
+    
     steps:
-    - uses: actions/checkout@v1
-    - run: |
-        npm install
-        npm run build
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
