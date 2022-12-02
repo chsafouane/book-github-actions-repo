@@ -1,13 +1,14 @@
-name: "ex workflow"
-on:
-  workflow_dispatch
+name: "ex variables"
+on: workflow_dispatch
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    env:
+      VARIABLE: jaune
     steps:
-      - name: "Just echoing"
-        run: |
-          cd /
-          ls -ll
-          touch cat.txt
+    - run: echo $VARIABLE
+    - run: |
+        echo "VARIABLE=vert" >> $GITHUB_ENV
+        echo $VARIABLE
+    - run: echo $VARIABLE
