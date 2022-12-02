@@ -1,14 +1,11 @@
-name: "ex variables"
+name: "ex-vars"
 on: workflow_dispatch
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      VARIABLE: jaune
+      VAR1: hello
     steps:
-    - run: echo $VARIABLE
-    - run: |
-        echo "VARIABLE=vert" >> $GITHUB_ENV
-        echo $VARIABLE
-    - run: echo $VARIABLE
+      - run: echo VAR2=$VAR1 >> $GITHUB_ENV
+      - run: echo $VAR2
