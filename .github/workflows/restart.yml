@@ -7,5 +7,4 @@ jobs:
     env:
       VAR1: hello
     steps:
-      - run: echo VAR2=$VAR1 >> $GITHUB_ENV
-      - run: echo $VAR2
+      - run: echo ${{ secrets.MON_SECRET }}
