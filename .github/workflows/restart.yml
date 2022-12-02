@@ -1,10 +1,10 @@
-name: "ex-vars"
+name: "ex - secrets"
 on: workflow_dispatch
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      VAR1: hello
     steps:
-      - run: echo ${{ secrets.MON_SECRET }}
+      - uses: lgmorand/github-action-hello@v1
+        with:
+          firstname: ${{ secrets.MON_SECRET }}
