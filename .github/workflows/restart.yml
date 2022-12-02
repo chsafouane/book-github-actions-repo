@@ -6,7 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Dev
+    steps:
+    - run: echo "Hello"
   Test:
     runs-on: ubuntu-latest
     environment:
       name: Test de charge
+    steps:
+    - run: echo "Hello"
