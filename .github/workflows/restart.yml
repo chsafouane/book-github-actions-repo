@@ -1,10 +1,12 @@
-name: "ex - secrets"
+name: "ex-env"
 on: workflow_dispatch
 
 jobs:
-  build:
+  Dev:
     runs-on: ubuntu-latest
-    steps:
-      - uses: lgmorand/github-action-hello@v1
-        with:
-          firstname: ${{ secrets.MON_SECRET }}
+    environment:
+      name: Dev
+  Test:
+    runs-on: ubuntu-latest
+    environment:
+      name: Test de charge
