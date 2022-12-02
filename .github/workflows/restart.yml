@@ -9,5 +9,5 @@ jobs:
       - name: "Just echoing"
         run: |
           cd /
-          ls --all
+          ls -ll
           touch cat.txt
