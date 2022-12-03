@@ -1,31 +1,11 @@
-name: "ex-env"
+name: "ex-cf"
 on: workflow_dispatch
 
 jobs:
-  job1:
-    name: Dev
+  build:
+    env:
+      VAR: Hello
     runs-on: ubuntu-latest
-    environment: Dev
     steps:
-      - run: echo "Hello 1"
-  job2:
-    name: Test de charge
-    runs-on: ubuntu-latest
-    environment: Test de charge
-    needs: job1
-    steps:
-      - run: echo "Hello 2"
-  job3:
-    name: Recette
-    runs-on: ubuntu-latest
-    environment: Recette
-    needs: job1
-    steps:
-      - run: echo "Hello 3"
-  job4:
-    name: Prod
-    runs-on: ubuntu-latest
-    environment: Prod
-    needs: [job2, job3]
-    steps:
-      - run: echo "Hello 4"
+      - if: ${{ VAR }} = 'hello'
+        run: echo ${{ VAR }}
