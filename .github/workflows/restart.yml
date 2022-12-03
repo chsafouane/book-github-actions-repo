@@ -7,5 +7,5 @@ jobs:
       VAR: Hello
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ VAR }} = 'hello'
-        run: echo ${{ VAR }}
+      - if: ${{ env.VAR }} = 'hello'
+        run: echo ${{ env.VAR }}
